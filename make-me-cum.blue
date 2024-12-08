@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Check if gammastep is running
+if pgrep -x "gammastep" > /dev/null; then
+  echo "Gammastep is running. Stopping it..."
+  pkill -x "gammastep"
+  echo "Blue light filter turned off."
+else
+  echo "Gammastep is not running. Starting it..."
+  gammastep --config ~/.config/gammastep/config &
+  echo "Blue light filter turned on."
+fi
+
